@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import classes from "./Recipes.module.css";
-import { BsFillBookmarkStarFill } from "react-icons/bs";
+import { BsFillBookmarkPlusFill } from "react-icons/bs";
+import { BsFillBookmarkCheckFill } from "react-icons/bs";
 
 const Recipes = () => {
+  const [bookmark, setBookmark] = useState(true);
+
+  const handleClick = () => {
+    setBookmark(!bookmark);
+  };
+
   const [recipes, setRecipes] = useState([
     {
       url: "https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg",
@@ -84,11 +91,21 @@ const Recipes = () => {
                   <div className="card-body">
                     <div className="d-flex justify-content-between">
                       <h5 className="card-title">{recipe.name}</h5>
-                      <button className="btn btn-success">
-                        <span>
-                          <BsFillBookmarkStarFill />
-                        </span>
-                      </button>
+                      <div onClick={handleClick}>
+                        {bookmark ? (
+                          <button className="btn btn-success">
+                            <span>
+                              <BsFillBookmarkPlusFill />
+                            </span>
+                          </button>
+                        ) : (
+                          <button className="btn btn-primary">
+                            <span>
+                              <BsFillBookmarkCheckFill />
+                            </span>
+                          </button>
+                        )}
+                      </div>
                     </div>
                     <p className="card-text ">{recipe.details}</p>
 
