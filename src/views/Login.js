@@ -16,11 +16,14 @@ const Login = () => {
     if (email.length === 0) {
       emailE = true;
       setEmailEr("Email is Empty");
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/.test(email)) {
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       emailE = true;
+      console.log(email);
       setEmailEr("Email is Invalid");
     } else {
       emailE = false;
+
+      console.log("Here");
       setEmailEr("");
     }
 
