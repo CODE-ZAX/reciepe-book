@@ -1,0 +1,14 @@
+.body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signupBody {
+  width: 500px;
+}
+
+.inputForm {
+  width: 100% !important;
+}
