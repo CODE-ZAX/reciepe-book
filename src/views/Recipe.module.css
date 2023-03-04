@@ -5,3 +5,7 @@
   align-items: center;
   margin-top: 220px;
 }
+
+.customList li {
+  list-style: none;
+}

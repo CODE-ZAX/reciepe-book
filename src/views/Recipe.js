@@ -1,49 +1,50 @@
 import { useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import classes from "./Recipe.module.css";
+import { BsFillBookmarkStarFill } from "react-icons/bs";
+import { FiMoreHorizontal } from "react-icons/fi";
 
 const Recipe = () => {
   const { rid } = useParams();
-  const [recipes, setRecipes] = useState([]);
 
-  const recipe = {
-    name: "Spaghetti Bolognese",
-    details: "A classic Italian pasta dish with meaty tomato sauce.",
-    ingredients: [
-      { name: "spaghetti", quantity: "12 oz" },
-      { name: "ground beef", quantity: "1 lb" },
-      { name: "onion", quantity: "1 medium" },
-      { name: "garlic", quantity: "2 cloves" },
-      { name: "canned tomatoes", quantity: "28 oz" },
-      { name: "tomato paste", quantity: "2 tbsp" },
-      { name: "dried basil", quantity: "1 tsp" },
-      { name: "dried oregano", quantity: "1 tsp" },
-      { name: "salt", quantity: "1/2 tsp" },
-      { name: "black pepper", quantity: "1/4 tsp" },
-      { name: "olive oil", quantity: "2 tbsp" },
-    ],
-    instructions: [
-      "Cook spaghetti according to package directions. Drain and set aside.",
-      "In a large skillet, cook ground beef over medium-high heat until browned. Drain excess fat.",
-      "Add chopped onion and minced garlic to the skillet. Cook until onion is translucent.",
-      "Stir in canned tomatoes, tomato paste, dried basil, dried oregano, salt, and black pepper. Bring to a simmer and cook for 10 minutes.",
-      "Serve sauce over spaghetti and enjoy!",
-    ],
-  };
   return (
     <div className={classes.body}>
-      <div className={classes.recipesBody}>
+      <div>
         <div className="card">
           <img
             src="https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg"
             className="card-img-top"
             alt="Turkey-Pot-Pie"
           />
-          <div className="card-body">
-            <h5 className="card-title">Turkey Pot Pie</h5>
-            <p className="card-text">Pot-Pie is classic comfort food</p>
+          <div className="card-body  d-flex justify-content-between">
+            <div>
+              <h5 className="card-title">Turkey Pot Pie</h5>
+              <p className="card-text">Pot-Pie is classic comfort food</p>
+            </div>
+            <div className="d-flex align-items-center">
+              <button className="btn btn-success">
+                <span>
+                  <BsFillBookmarkStarFill />
+                </span>
+              </button>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <FiMoreHorizontal />
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li class="dropdown-item">Edit</li>
+                  <li class="dropdown-item">Delete</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <ul className="list-group list-group-flush ">
+          <ul className={"list-group list-group-flush " + classes.customList}>
             <li className="list-group-item ">
               <li>Yield: 1 pie</li>
               <li>Prep time: 15 minutes</li>
