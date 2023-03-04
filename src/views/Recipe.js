@@ -28,9 +28,9 @@ const Recipe = () => {
                   <BsFillBookmarkStarFill />
                 </span>
               </button>
-              <div class="dropdown">
+              <div className="dropdown">
                 <button
-                  class="btn btn-secondary dropdown-toggle"
+                  className="btn btn-secondary dropdown-toggle"
                   type="button"
                   id="dropdownMenuButton1"
                   data-bs-toggle="dropdown"
@@ -38,9 +38,12 @@ const Recipe = () => {
                 >
                   <FiMoreHorizontal />
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li class="dropdown-item">Edit</li>
-                  <li class="dropdown-item">Delete</li>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  <li className="dropdown-item">Edit</li>
+                  <li className="dropdown-item">Delete</li>
                 </ul>
               </div>
             </div>
