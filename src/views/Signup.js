@@ -24,8 +24,9 @@ const Signup = () => {
       setFullNameEr("Full Name is Empty");
     } else if (!fullName.includes(" ")) {
       fullNameE = true;
-      setFullNameEr("Full Name must have an empty space");
-      console.log("here");
+      setFullNameEr(
+        "First name and Last name must be seperated with an empty space"
+      );
     } else {
       fullNameE = false;
       setFullNameEr("");
@@ -73,7 +74,7 @@ const Signup = () => {
     <div className={classes.body}>
       <div className={classes.signupBody}>
         <h3 className="text-center mb-3">
-          <strong>Signup</strong>{" "}
+          <strong>Signup</strong>
         </h3>
         <form onSubmit={handleSubmit} noValidate>
           <div className={"form-floating mb-2"}>
@@ -87,7 +88,7 @@ const Signup = () => {
                   ? "form-control"
                   : "form-control is-invalid"
               }
-              id="floatingInput"
+              id="floatingInput1"
               placeholder="John Doe"
             />
             <div className="invalid-feedback">{fullNameEr}</div>
@@ -104,7 +105,7 @@ const Signup = () => {
                   ? "form-control"
                   : "form-control is-invalid"
               }
-              id="floatingInput"
+              id="floatingInput2"
               placeholder="name@example.com"
             />
             <div className="invalid-feedback">{emailEr}</div>
@@ -121,7 +122,7 @@ const Signup = () => {
                   ? "form-control"
                   : "form-control is-invalid"
               }
-              id="floatingInput"
+              id="floatingInput3"
               placeholder="*********"
             />
             <div className="invalid-feedback">{passwordEr}</div>
@@ -138,7 +139,7 @@ const Signup = () => {
                   ? "form-control"
                   : "form-control is-invalid"
               }
-              id="floatingInput"
+              id="floatingInput4"
               placeholder="*********"
             />
             <div className="invalid-feedback">{confirmPasswordEr}</div>
@@ -146,19 +147,12 @@ const Signup = () => {
           </div>
           <div className="checkbox mb-3">
             <label>
-              <input
-                type="checkbox"
-                defaultValue="remember-me"
-                className={classes.chkBox}
-              />{" "}
+              <input type="checkbox" defaultValue="remember-me" />
               Remember me
             </label>
           </div>
 
-          <button
-            className={"w-100 btn btn-primary  " + classes.customBtn}
-            type="submit"
-          >
+          <button className={"w-100 btn btn-primary  "} type="submit">
             Sign up
           </button>
         </form>
