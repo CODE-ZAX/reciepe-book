@@ -25,7 +25,7 @@ const Signup = () => {
     } else if (!fullName.includes(" ")) {
       fullNameE = true;
       setFullNameEr(
-        "First name and Last name must be seperated with an empty space"
+        "First Name and Last Name must be seperated with an empty space"
       );
     } else {
       fullNameE = false;
