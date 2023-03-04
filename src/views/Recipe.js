@@ -30,14 +30,13 @@ const Recipe = () => {
       "Serve sauce over spaghetti and enjoy!",
     ],
   };
-
   return (
     <div className={classes.body}>
       <div className={classes.recipesBody}>
         <div className="card">
           <img
             src="https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg"
-            class="card-img-top"
+            className="card-img-top"
             alt="Turkey-Pot-Pie"
           />
           <div className="card-body">
