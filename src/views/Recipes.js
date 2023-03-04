@@ -95,13 +95,13 @@ const Recipes = () => {
                         {bookmark ? (
                           <button className="btn btn-success">
                             <span>
-                              <BsFillBookmarkPlusFill />
+                              <BsFillBookmarkPlusFill size={20} />
                             </span>
                           </button>
                         ) : (
                           <button className="btn btn-primary">
                             <span>
-                              <BsFillBookmarkCheckFill />
+                              <BsFillBookmarkCheckFill size={20} />
                             </span>
                           </button>
                         )}
