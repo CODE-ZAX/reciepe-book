@@ -10,6 +10,7 @@ const Recipe = () => {
   const { recipes } = useRecipe();
   const recipe = recipes[rid];
   const navigate = useNavigate();
+  navigate("gasdgsad");
   return (
     <div className={classes.body}>
       <div>
