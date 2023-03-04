@@ -1,12 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React from "react";
 import classes from "./Recipe.module.css";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { FiMoreHorizontal } from "react-icons/fi";
+import { useRecipe } from "../context/RecipeContext";
 
 const Recipe = () => {
   const { rid } = useParams();
-
+  const { recipes } = useRecipe();
+  const recipe = recipes[rid];
+  const navigate = useNavigate();
   return (
     <div className={classes.body}>
       <div>
