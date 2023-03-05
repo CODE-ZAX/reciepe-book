@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useReducer, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -14,7 +14,8 @@ export const useRecipe = () => useContext(RecipeContext);
 
 const RecipeProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [recipes, setRecipes] = useState([
+
+  const initialRecipes = [
     {
       id: 1,
       url: "https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg",
@@ -134,7 +135,23 @@ const RecipeProvider = ({ children }) => {
         "Add the curry powder, cumin, coriander, turmeric",
       ],
     },
-  ]);
+  ];
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "Add":
+        state.push(action.data);
+        return state;
+      default:
+        return state;
+    }
+  };
+
+  const [recipes, dispatch] = useReducer(reducer, initialRecipes);
+
+  const handleNewRecipe = (recipe) => {
+    dispatch({ type: "Add", data: recipe });
+  };
 
   const signUp = (email, password) =>
     createUserWithEmailAndPassword(auth, email, password);
@@ -165,7 +182,7 @@ const RecipeProvider = ({ children }) => {
         user,
         logOut,
         setUser,
-        setRecipes,
+        handleNewRecipe,
       }}
     >
       {children}

@@ -6,8 +6,9 @@ import RecipeListItem from "../components/RecipeListItem/RecipeListItem";
 
 const Recipes = () => {
   const [bookmark, setBookmark] = useState(true);
+
   const [formData, setFormData] = useState({
-    id: 1,
+    id: Math.random() * 100000,
     url: "",
     name: "",
     details: "",
@@ -20,9 +21,16 @@ const Recipes = () => {
   });
   const [showIngredientForm, setShowIngredientForm] = useState(false);
   const [showInstructionsForm, setShowInstructionsForm] = useState(false);
-  const { recipes } = useRecipe();
+  const { recipes, setRecipes } = useRecipe();
   const handleClick = () => {
     setBookmark(!bookmark);
+  };
+  const submitForm = (e) => {
+    e.preventDefault();
+    var temp = recipes;
+    temp.push(formData);
+    setRecipes(temp);
+    console.log("i happened");
   };
   const AddInstructions = ({ setFormData, setShowInstructionsForm }) => {
     const [instruction, setInstruction] = useState("");
@@ -142,11 +150,7 @@ const Recipes = () => {
                 ></button>
               </div>
               <div className="modal-body">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                  }}
-                >
+                <div>
                   <div className="form-floating mb-3">
                     <input
                       type="text"
@@ -281,7 +285,7 @@ const Recipes = () => {
                       </button>
                     )}
                   </div>
-                </form>
+                </div>
               </div>
               <div className="modal-footer">
                 <button
@@ -291,9 +295,13 @@ const Recipes = () => {
                 >
                   Close
                 </button>
-                <button type="submit" className="btn btn-primary">
+                <div
+                  onClick={submitForm}
+                  className="btn btn-primary"
+                  data-bs-dismiss="modal"
+                >
                   Add
-                </button>
+                </div>
               </div>
             </div>
           </div>
