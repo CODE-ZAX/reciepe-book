@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useRecipe } from "../context/RecipeContext";
+import { BiLogOut } from "react-icons/bi";
 
 const Profile = () => {
   const { logOut } = useRecipe();
@@ -15,7 +16,15 @@ const Profile = () => {
       className="d-flex align-items-center justify-content-center "
       style={{ height: "100vh" }}
     >
-      <button onClick={handleLogout}>Signout</button>
+      <div>
+        <h4>Full Name:</h4>
+        <input type="text" />
+      </div>
+      <button onClick={handleLogout} className="btn btn-danger">
+        <span>
+          <BiLogOut />
+        </span>
+      </button>
     </div>
   );
 };
