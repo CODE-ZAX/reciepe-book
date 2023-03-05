@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
 import Bookmark from "./views/Bookmark";
 import Error from "./views/Error";
 import Home from "./views/Home";
@@ -11,9 +12,7 @@ import Signup from "./views/Signup";
 const App = () => {
   return (
     <div>
-      <div className="fixed-top">
-        <h2>Recipe Book</h2>
-      </div>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
