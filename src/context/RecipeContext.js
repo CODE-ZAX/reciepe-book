@@ -14,7 +14,7 @@ export const useRecipe = () => useContext(RecipeContext);
 
 const RecipeProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const recipes = [
+  const [recipes, setRecipes] = useState([
     {
       id: 1,
       url: "https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg",
@@ -134,7 +134,7 @@ const RecipeProvider = ({ children }) => {
         "Add the curry powder, cumin, coriander, turmeric",
       ],
     },
-  ];
+  ]);
 
   const signUp = (email, password) =>
     createUserWithEmailAndPassword(auth, email, password);
@@ -165,6 +165,7 @@ const RecipeProvider = ({ children }) => {
         user,
         logOut,
         setUser,
+        setRecipes,
       }}
     >
       {children}
