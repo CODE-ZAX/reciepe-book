@@ -9,10 +9,13 @@ import Error from "./Error";
 const Recipe = () => {
   const { rid } = useParams();
   const { recipes } = useRecipe();
-
+  const recipeSearch = recipes.filter((single) => single.id == rid);
   var recipe;
 
-  return !recipe ? (
+  if (recipeSearch.length !== 0) {
+    recipe = recipeSearch[0];
+  }
+  return recipeSearch.length === 0 ? (
     <Navigate to={"/adas"} />
   ) : (
     <div className={classes.body}>
