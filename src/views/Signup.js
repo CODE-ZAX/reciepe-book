@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRecipe } from "../context/RecipeContext";
 import classes from "./Signup.module.css";
 
 const Signup = () => {
@@ -11,8 +12,12 @@ const Signup = () => {
   const [emailEr, setEmailEr] = useState("");
   const [passwordEr, setPasswordEr] = useState("");
   const [confirmPasswordEr, setConfirmPasswordEr] = useState("");
+  const [loader, setLoader] = useState(false);
+  const [signupErr, setSignupError] = useState("");
 
-  const handleSubmit = (e) => {
+  const { signUp, manageAccount } = useRecipe();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     var fullNameE = false,
       emailE = false,
@@ -66,7 +71,22 @@ const Signup = () => {
     }
 
     if (!fullNameE && !emailE && !passwordE && !confirmPasswordE) {
-      console.log("Signup");
+      setLoader(true);
+      try {
+        await signUp(email, password);
+        try {
+          await manageAccount(fullName);
+          setLoader(false);
+          setSignupError("");
+        } catch (e) {
+          setLoader(false);
+          console.log(e);
+          setSignupError("Couldnt add name!");
+        }
+      } catch (e) {
+        setLoader(false);
+        setSignupError(e.message);
+      }
     }
   };
 
@@ -76,6 +96,9 @@ const Signup = () => {
         <h3 className="text-center mb-3">
           <strong>Signup</strong>
         </h3>
+        <small className="text-center text-danger">
+          {signupErr.length !== 0 && signupErr}
+        </small>
         <form onSubmit={handleSubmit} noValidate>
           <div className={"form-floating mb-2"}>
             <input
@@ -151,10 +174,13 @@ const Signup = () => {
               Remember me
             </label>
           </div>
-
-          <button className={"w-100 btn btn-primary"} type="submit">
-            Sign up
-          </button>
+          {loader ? (
+            <div className="my-3 text-center">Loading...</div>
+          ) : (
+            <button className={"w-100 btn btn-primary"} type="submit">
+              Sign up
+            </button>
+          )}
         </form>
       </div>
     </div>

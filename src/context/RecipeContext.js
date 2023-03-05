@@ -1,10 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../firebase";
 
 const RecipeContext = React.createContext();
 
 export const useRecipe = () => useContext(RecipeContext);
 
 const RecipeProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
   const recipes = [
     {
       id: 1,
@@ -127,10 +136,34 @@ const RecipeProvider = ({ children }) => {
     },
   ];
 
+  const signUp = (email, password) =>
+    createUserWithEmailAndPassword(auth, email, password);
+  const manageAccount = (fullname) =>
+    updateProfile(auth.currentUser, {
+      displayName: fullname,
+    });
+  const login = (email, password) =>
+    signInWithEmailAndPassword(auth, email, password);
+
+  const logOut = () => signOut(auth);
+
+  onAuthStateChanged(auth, (usr) => {
+    if (usr) {
+      setUser(usr);
+    } else {
+      setUser(null);
+    }
+  });
+
   return (
     <RecipeContext.Provider
       value={{
         recipes,
+        signUp,
+        manageAccount,
+        login,
+        user,
+        logOut,
       }}
     >
       {children}
