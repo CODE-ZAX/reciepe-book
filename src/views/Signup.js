@@ -152,7 +152,7 @@ const Signup = () => {
             </label>
           </div>
 
-          <button className={"w-100 btn btn-primary  "} type="submit">
+          <button className={"w-100 btn btn-primary"} type="submit">
             Sign up
           </button>
         </form>

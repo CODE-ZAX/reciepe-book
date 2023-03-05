@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../Utility/RecipeError.module.css";
+import classes from "./RecipeError.module.css";
 
 const Error = () => {
   return (
@@ -10,7 +10,7 @@ const Error = () => {
     >
       <div className="text-center">
         <h1>404</h1>
-        <h4>Page Not Found</h4>
+        <h4>Recipe Not Found</h4>
       </div>
     </div>
   );

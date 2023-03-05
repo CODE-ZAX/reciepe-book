@@ -14,14 +14,12 @@ const App = () => {
       <div className="fixed-top">
         <h2>Recipe Book</h2>
       </div>
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipe">
           <Route path="/recipe" element={<Recipes />} />
           <Route path="/recipe/:rid" element={<Recipe />} />
         </Route>
-
         <Route path="bookmarks" element={<Bookmark />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
