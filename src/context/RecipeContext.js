@@ -164,6 +164,7 @@ const RecipeProvider = ({ children }) => {
         login,
         user,
         logOut,
+        setUser,
       }}
     >
       {children}

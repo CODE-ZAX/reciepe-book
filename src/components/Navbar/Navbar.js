@@ -68,7 +68,7 @@ const Navbar = () => {
                   }
                   to="/profile"
                 >
-                  {user.displayName}
+                  {user.email}
                 </NavLink>
               </li>
             ) : (

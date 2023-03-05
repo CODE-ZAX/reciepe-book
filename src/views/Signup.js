@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useRecipe } from "../context/RecipeContext";
+import { auth } from "../firebase";
 import classes from "./Signup.module.css";
 
 const Signup = () => {
