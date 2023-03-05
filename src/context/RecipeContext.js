@@ -40,7 +40,7 @@ const RecipeProvider = ({ children }) => {
       name: "Chicken Curry",
       details:
         "A typical curry from the Indian subcontinent consists of chicken stewed in an onion- and tomato-based sauce, ginger, garlic, tomato puree, chilli peppers, cumin, coriander, cinnamon, and cardamom.",
-      yield: "1 pie",
+      yield: "3 -4 servings",
       preptime: "10 - 15 minutes",
       cooktime: "10 minutes",
       totaltime: "25 minutes",
