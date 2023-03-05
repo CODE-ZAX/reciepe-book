@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import { useRecipe } from "../context/RecipeContext";
 import classes from "./Signup.module.css";
 
 const Login = () => {
@@ -8,7 +10,13 @@ const Login = () => {
   const [emailEr, setEmailEr] = useState("");
   const [passwordEr, setPasswordEr] = useState("");
 
-  const handleSubmit = (e) => {
+  const [loader, setLoader] = useState(false);
+  const [signinErr, setSigninError] = useState("");
+
+  const { login } = useRecipe();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     var emailE = false,
       passwordE = false;
@@ -30,16 +38,20 @@ const Login = () => {
     if (password.length === 0) {
       passwordE = true;
       setPasswordEr("Password cannot be Empty");
-    } else if (password.length < 8) {
-      passwordE = true;
-      setPasswordEr("Password must contain atleast 8 characters");
     } else {
       passwordE = false;
       setPasswordEr("");
     }
 
     if (!emailE && !passwordE) {
-      console.log("Logged in");
+      setLoader(true);
+      try {
+        await login(email, password);
+        navigate("/");
+      } catch (e) {
+        setLoader(false);
+        setSigninError("Email or Password does not match");
+      }
     }
   };
 
@@ -49,6 +61,9 @@ const Login = () => {
         <h3 className="text-center mb-3">
           <strong>Login</strong>
         </h3>
+        <small className="text-center text-danger">
+          {signinErr.length !== 0 && signinErr}
+        </small>
         <form onSubmit={handleSubmit} noValidate>
           <div className={"form-floating mb-2"}>
             <input
@@ -91,10 +106,13 @@ const Login = () => {
               Remember me
             </label>
           </div>
-
-          <button className={"w-100 btn btn-primary  "} type="submit">
-            Login
-          </button>
+          {loader ? (
+            <div className="my-3 text-center">Loading...</div>
+          ) : (
+            <button className={"w-100 btn btn-primary  "} type="submit">
+              Login
+            </button>
+          )}
         </form>
       </div>
     </div>

@@ -1,8 +1,13 @@
 import React from "react";
 import classes from "./Home.module.css";
 import landingPageImage from "../Images/LandingPageImage.jpg";
+import { useNavigate } from "react-router";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/recipe");
+  };
   return (
     <div className={classes.main}>
       <div className="container">
@@ -18,7 +23,9 @@ const Home = () => {
                 experienced chef, our recipes are designed to help you create
                 tasty dishes that are perfect for any occasion.
               </p>
-              <button className="btn btn-danger mt-5">Get Started</button>
+              <button onClick={handleClick} className="btn btn-danger mt-5">
+                Get Started
+              </button>
             </div>
           </div>
           <div className="col-6">

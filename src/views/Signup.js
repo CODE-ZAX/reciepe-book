@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { useRecipe } from "../context/RecipeContext";
 import classes from "./Signup.module.css";
 
@@ -16,6 +17,7 @@ const Signup = () => {
   const [signupErr, setSignupError] = useState("");
 
   const { signUp, manageAccount } = useRecipe();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,6 +76,7 @@ const Signup = () => {
       setLoader(true);
       try {
         await signUp(email, password);
+        navigate("/");
         try {
           await manageAccount(fullName);
           setLoader(false);
