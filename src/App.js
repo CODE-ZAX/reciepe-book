@@ -9,6 +9,7 @@ import Recipe from "./views/Recipe";
 import Recipes from "./views/Recipes";
 import Signup from "./views/Signup";
 import RecipeError from "./Utility/RecipeError";
+import Profile from "./views/Profile";
 const App = () => {
   return (
     <div>
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="bookmarks" element={<Bookmark />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useRecipe } from "../../context/RecipeContext";
 
 const Navbar = () => {
+  const { user } = useRecipe();
   const [searchId, setSearchId] = useState("");
   const navigate = useNavigate();
   const submitHandler = (e) => {
@@ -58,26 +60,41 @@ const Navbar = () => {
                 Bookmark
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link text-success" : "nav-link"
-                }
-                to="/login"
-              >
-                Login
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link text-success" : "nav-link"
-                }
-                to="/signup"
-              >
-                Signup
-              </NavLink>
-            </li>
+            {user ? (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "nav-link text-success" : "nav-link"
+                  }
+                  to="/profile"
+                >
+                  {user.displayName}
+                </NavLink>
+              </li>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link text-success" : "nav-link"
+                    }
+                    to="/login"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link text-success" : "nav-link"
+                    }
+                    to="/signup"
+                  >
+                    Signup
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
           <form className="d-flex" onSubmit={submitHandler}>
             <input
