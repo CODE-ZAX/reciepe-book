@@ -1,9 +1,7 @@
 .body {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 350px;
+  max-width: 70%;
+  margin: 100px auto 0 auto;
 }
 
 .customList li {

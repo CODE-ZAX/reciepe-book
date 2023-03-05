@@ -7,6 +7,7 @@ export const useRecipe = () => useContext(RecipeContext);
 const RecipeProvider = ({ children }) => {
   const recipes = [
     {
+      id: 1,
       url: "https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg",
       name: "Spaghetti Carbonara",
       details:
@@ -36,6 +37,7 @@ const RecipeProvider = ({ children }) => {
       ],
     },
     {
+      id: 2,
       url: "https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg",
       name: "Chicken Curry",
       details:
@@ -58,6 +60,7 @@ const RecipeProvider = ({ children }) => {
       ],
     },
     {
+      id: 3,
       url: "https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg",
       name: "Butter Chicken",
       details:
@@ -88,6 +91,7 @@ const RecipeProvider = ({ children }) => {
       ],
     },
     {
+      id: 4,
       url: "https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg",
       name: "Noodles",
       details:
