@@ -16,7 +16,7 @@ const Recipe = () => {
     recipe = recipeSearch[0];
   }
   return recipeSearch.length === 0 ? (
-    <Navigate to={"/adas"} />
+    <Navigate to={"/recipe/error"} />
   ) : (
     <div className={classes.body}>
       <div>

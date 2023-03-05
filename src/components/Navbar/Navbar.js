@@ -83,7 +83,7 @@ const Navbar = () => {
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Search Recipe Id"
               aria-label="Search"
               onChange={(e) => {
                 setSearchId(e.target.value);

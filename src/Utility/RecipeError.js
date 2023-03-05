@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./RecipeError.module.css";
 
-const Error = () => {
+const RecipeError = () => {
   return (
     <div
       className={
@@ -16,4 +16,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default RecipeError;

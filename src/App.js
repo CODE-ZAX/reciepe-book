@@ -8,7 +8,7 @@ import Login from "./views/Login";
 import Recipe from "./views/Recipe";
 import Recipes from "./views/Recipes";
 import Signup from "./views/Signup";
-
+import RecipeError from "./Utility/RecipeError";
 const App = () => {
   return (
     <div>
@@ -18,6 +18,7 @@ const App = () => {
         <Route path="/recipe">
           <Route path="/recipe" element={<Recipes />} />
           <Route path="/recipe/:rid" element={<Recipe />} />
+          <Route path="/recipe/error" element={<RecipeError />} />
         </Route>
         <Route path="bookmarks" element={<Bookmark />} />
         <Route path="login" element={<Login />} />
