@@ -55,9 +55,9 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive ? "nav-link text-success" : "nav-link"
                 }
-                to="/bookmarks"
+                to="/favourite"
               >
-                Bookmark
+                Favourites
               </NavLink>
             </li>
             {user ? (

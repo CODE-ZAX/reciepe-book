@@ -4,7 +4,6 @@ import classes from "./Recipe.module.css";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { useRecipe } from "../context/RecipeContext";
-import Error from "./Error";
 
 const Recipe = () => {
   const { rid } = useParams();

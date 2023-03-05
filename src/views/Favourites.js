@@ -1,13 +1,12 @@
 import React from "react";
 import { useRecipe } from "../context/RecipeContext";
-
-import { BsFillBookmarkPlusFill } from "react-icons/bs";
+import { AiFillHeart } from "react-icons/ai";
 
 const Bookmark = () => {
   const { recipes } = useRecipe();
   return (
     <div style={{ height: "100vh", marginTop: "70px" }}>
-      <h1 className="text-center mb-4">Bookmarks </h1>
+      <h1 className="text-center mb-4">Favourites</h1>
       <div className="container">
         {recipes.map((recipe) => {
           return (
@@ -25,9 +24,9 @@ const Bookmark = () => {
                     <div className="d-flex justify-content-between">
                       <h5 className="card-title">{recipe.name}</h5>
                       <div>
-                        <button className="btn btn-success">
+                        <button className="btn btn-primary">
                           <span>
-                            <BsFillBookmarkPlusFill size={20} />
+                            <AiFillHeart size={20} />
                           </span>
                         </button>
                       </div>
