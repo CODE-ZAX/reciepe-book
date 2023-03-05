@@ -24,11 +24,12 @@ const Recipe = () => {
           <img src={recipe.url} className="card-img-top" alt="Turkey-Pot-Pie" />
           <div className="card-body d-flex justify-content-between">
             <div>
+              <small> ID: {recipe.id}</small>
               <h5 className="card-title">{recipe.name}</h5>
               <p className="card-text">{recipe.details}</p>
             </div>
             <div className="d-flex align-items-center">
-              <button className="btn btn-success">
+              <button className="btn btn-success me-2">
                 <span>
                   <BsFillBookmarkStarFill />
                 </span>
