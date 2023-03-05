@@ -5,10 +5,11 @@ import { IoAddCircleSharp } from "react-icons/io5";
 import RecipeListItem from "../components/RecipeListItem/RecipeListItem";
 
 const Recipes = () => {
-  const [bookmark, setBookmark] = useState(true);
+  // const [bookmark, setBookmark] = useState(true);
 
   const [formData, setFormData] = useState({
-    id: Math.random() * 100000,
+    favourite: false,
+    id: Math.floor(Math.random() * 100000),
     url: "",
     name: "",
     details: "",
@@ -21,16 +22,12 @@ const Recipes = () => {
   });
   const [showIngredientForm, setShowIngredientForm] = useState(false);
   const [showInstructionsForm, setShowInstructionsForm] = useState(false);
-  const { recipes, setRecipes } = useRecipe();
-  const handleClick = () => {
-    setBookmark(!bookmark);
-  };
+  const { recipes, addRecipe } = useRecipe();
+  // const handleClick = () => {
+  //   setBookmark(!bookmark);
+  // };
   const submitForm = (e) => {
-    e.preventDefault();
-    var temp = recipes;
-    temp.push(formData);
-    setRecipes(temp);
-    console.log("i happened");
+    addRecipe(formData);
   };
   const AddInstructions = ({ setFormData, setShowInstructionsForm }) => {
     const [instruction, setInstruction] = useState("");
@@ -314,8 +311,8 @@ const Recipes = () => {
             <RecipeListItem
               recipe={recipe}
               classes={classes}
-              handleClick={handleClick}
-              bookmark={bookmark}
+              handleClick={() => {}}
+              bookmark={true}
             />
           );
         })}
