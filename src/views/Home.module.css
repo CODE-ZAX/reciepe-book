@@ -1,3 +1,10 @@
 .main {
-  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.img {
+  width: 100%;
 }
