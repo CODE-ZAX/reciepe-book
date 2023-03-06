@@ -4,7 +4,7 @@ import { BsFillBookmarkPlusFill } from "react-icons/bs";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 const RecipeListItem = ({ recipe, classes, handleClick, bookmark }) => {
   return (
-    <div className="card mb-3 " key={recipe.id}>
+    <div className="card mb-3 ">
       <div className="row g-0">
         <div className="col-md-4">
           <img

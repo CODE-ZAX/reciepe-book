@@ -137,36 +137,38 @@ const initialRecipes = [
   },
 ];
 
-// const reducer = (state, action) => {
-//   switch (action.type) {
-//     case "Add":
-//       return [];
-//     case "Remove":
-//       return state.filter((item) => item.id !== action.id);
-//     case "Favourite":
-//       return state.map((item) => {
-//         if (item.id === action.id) {
-//           return { ...item, favourite: !item.favourite };
-//         } else {
-//           return item;
-//         }
-//       });
-//     default:
-//       return state;
-//   }
-// };
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "Add":
+      return [...state, action.data];
+    case "Remove":
+      return state.filter((item) => item.id !== action.id);
+    case "Favourite":
+      return state.map((item) => {
+        if (item.id === action.id) {
+          return { ...item, favourite: !item.favourite };
+        } else {
+          return item;
+        }
+      });
+    default:
+      return state;
+  }
+};
 const RecipeProvider = ({ children }) => {
-  // const [recipes, dispatch] = useReducer(reducer, initialRecipes);
-  const [recipes, setRecipes] = useState(initialRecipes);
+  const [recipes, dispatch] = useReducer(reducer, initialRecipes);
+  // const [recipes, setRecipes] = useState(initialRecipes);
+  // const recipes = initialRecipes;
   const [user, setUser] = useState(null);
 
-  // const handleNewRecipe = (recipe) => {
-  //   dispatch({ type: "Add", data: recipe });
-  // };
-
-  const addRecipe = (recipe) => {
-    setRecipes([...recipes, recipe]);
+  const handleNewRecipe = (recipe) => {
+    dispatch({ type: "Add", data: recipe });
   };
+
+  // const addRecipe = (recipe) => {
+  // recipes.push(recipe);
+  // setRecipes((previousRecipes) => [...previousRecipes, recipe]);
+  // };
 
   const signUp = (email, password) =>
     createUserWithEmailAndPassword(auth, email, password);
@@ -197,7 +199,7 @@ const RecipeProvider = ({ children }) => {
         user,
         logOut,
         setUser,
-        addRecipe,
+        handleNewRecipe,
       }}
     >
       {children}
