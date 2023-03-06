@@ -25,11 +25,13 @@ const Profile = () => {
           <h2>Email: </h2>
           <h2 className="ms-2">{user.email}</h2>
         </div>
-        <button className="btn btn-danger" onClick={handleLogout}>
-          <span>
-            <BiLogOut size={25} />
-          </span>
-        </button>
+        <div className="d-flex align-items-right justify-content-end">
+          <button className="btn btn-danger" onClick={handleLogout}>
+            <span>
+              <BiLogOut size={25} />
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );
