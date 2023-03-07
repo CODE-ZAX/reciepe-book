@@ -2,7 +2,9 @@ import React from "react";
 
 import { BsFillBookmarkPlusFill } from "react-icons/bs";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
-const RecipeListItem = ({ recipe, classes, handleClick, bookmark }) => {
+import { useRecipe } from "../../context/RecipeContext";
+const RecipeListItem = ({ recipe, classes }) => {
+  const { handleFavourite } = useRecipe();
   return (
     <div className="card mb-3 ">
       <div className="row g-0">
@@ -17,8 +19,12 @@ const RecipeListItem = ({ recipe, classes, handleClick, bookmark }) => {
           <div className="card-body">
             <div className="d-flex justify-content-between">
               <h5 className="card-title">{recipe.name}</h5>
-              <div onClick={handleClick}>
-                {bookmark ? (
+              <div
+                onClick={() => {
+                  handleFavourite(recipe);
+                }}
+              >
+                {recipe.favourite ? (
                   <button className="btn btn-success">
                     <span>
                       <BsFillBookmarkPlusFill size={20} />

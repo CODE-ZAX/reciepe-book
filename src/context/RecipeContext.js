@@ -100,7 +100,7 @@ const initialRecipes = [
     ],
   },
   {
-    favourite: false,
+    favourite: true,
     id: 4,
     url: "https://i.ibb.co/WBw5c0H/Turkey-Pot-Pie.jpg",
     name: "Noodles",
@@ -164,6 +164,9 @@ const RecipeProvider = ({ children }) => {
   const handleNewRecipe = (recipe) => {
     dispatch({ type: "Add", data: recipe });
   };
+  const handleFavourite = (recipe) => {
+    dispatch({ type: "Favourite", id: recipe.id });
+  };
 
   // const addRecipe = (recipe) => {
   // recipes.push(recipe);
@@ -200,6 +203,7 @@ const RecipeProvider = ({ children }) => {
         logOut,
         setUser,
         handleNewRecipe,
+        handleFavourite,
       }}
     >
       {children}
