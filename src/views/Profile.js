@@ -17,19 +17,21 @@ const Profile = () => {
       style={{ height: "100vh" }}
     >
       <div>
-        <div className="d-flex justify-content-left align-items-center">
+        <div className=" d-flex align-items-center justify-content-start">
           <h2>Full Name: </h2>
           <h2 className="ms-2">{user.displayName}</h2>
         </div>
-        <div className="d-flex align-items-center justify-content-center">
+        <div className="d-flex align-items-center justify-content-start">
           <h2>Email: </h2>
           <h2 className="ms-2">{user.email}</h2>
         </div>
-        <button onClick={handleLogout} className="btn btn-danger">
-          <span>
-            <BiLogOut size={25} />
-          </span>
-        </button>
+        <div className="d-flex align-items-right justify-content-end">
+          <button className="btn btn-danger" onClick={handleLogout}>
+            <span>
+              <BiLogOut size={25} />
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

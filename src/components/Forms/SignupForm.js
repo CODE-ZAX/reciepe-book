@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { useRecipe } from "../context/RecipeContext";
+import { useRecipe } from "../../context/RecipeContext";
 
 const SignupForm = ({ setSignupError }) => {
   const [fullName, setFullName] = useState("");

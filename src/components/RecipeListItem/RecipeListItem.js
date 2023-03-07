@@ -1,10 +1,8 @@
 import React from "react";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
-import { BsFillBookmarkPlusFill } from "react-icons/bs";
-import { BsFillBookmarkCheckFill } from "react-icons/bs";
-import { useRecipe } from "../../context/RecipeContext";
-const RecipeListItem = ({ recipe, classes }) => {
-  const { handleFavourite } = useRecipe();
+const RecipeListItem = ({ recipe, classes, handleClick, bookmark }) => {
   return (
     <div className="card mb-3 ">
       <div className="row g-0">
@@ -27,13 +25,13 @@ const RecipeListItem = ({ recipe, classes }) => {
                 {recipe.favourite ? (
                   <button className="btn btn-success">
                     <span>
-                      <BsFillBookmarkPlusFill size={20} />
+                      <AiOutlineHeart size={20} />
                     </span>
                   </button>
                 ) : (
                   <button className="btn btn-primary">
                     <span>
-                      <BsFillBookmarkCheckFill size={20} />
+                      <AiFillHeart size={20} />
                     </span>
                   </button>
                 )}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/Forms/LoginForm";
 import classes from "./Signup.module.css";
 
 const Login = () => {
