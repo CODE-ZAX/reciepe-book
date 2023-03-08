@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
+import { toast } from "react-toastify";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -169,15 +171,58 @@ const RecipeProvider = ({ children }) => {
 
   const handleNewRecipe = (recipe) => {
     dispatch({ type: "Add", data: recipe });
+    toast.success("Recipe Added", {
+      position: "bottom-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   const handleEditRecipe = (recipe) => {
     dispatch({ type: "Edit", data: recipe });
   };
   const handleDelete = (recipe) => {
     dispatch({ type: "Delete", id: recipe.id });
+    toast.success("Recipe Deleted Successfully", {
+      position: "bottom-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   const handleFavourite = (recipe) => {
     dispatch({ type: "Favourite", id: recipe.id });
+    if (recipe.favourite === true) {
+      toast.success("Recipe Added to Favourites", {
+        position: "bottom-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      toast.error("Recipe Removed from Favourites", {
+        position: "bottom-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
 
   const signUp = (email, password) =>

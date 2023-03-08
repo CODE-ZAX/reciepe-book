@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useRecipe } from "../../context/RecipeContext";
 
-const SignupForm = ({ setSignupError }) => {
+import { toast } from "react-toastify";
+
+const SignupForm = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -75,18 +77,45 @@ const SignupForm = ({ setSignupError }) => {
       try {
         await signUp(email, password);
         navigate("/");
+        toast.success("Account Created", {
+          position: "bottom-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         try {
           await manageAccount(fullName);
           setLoader(false);
-          setSignupError("");
         } catch (e) {
           setLoader(false);
           console.log(e);
-          setSignupError("Couldnt add name!");
+          toast.error("Cannot add Name!", {
+            position: "bottom-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         }
       } catch (e) {
         setLoader(false);
-        setSignupError(e.message);
+        toast.error("Email already in use!", {
+          position: "bottom-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     }
   };

@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useRecipe } from "../context/RecipeContext";
 import { BiLogOut } from "react-icons/bi";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const { user, logOut } = useRecipe();
@@ -10,6 +11,16 @@ const Profile = () => {
   const handleLogout = () => {
     logOut();
     navigate("/login");
+    toast.error("Logged out", {
+      position: "bottom-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <div

@@ -21,7 +21,7 @@ const Recipes = () => {
     selected.forEach(handleDelete);
     setIsEditing(!isEditing);
     setSelected([]);
-    toast.success("Deleted Multiple", {
+    toast.success("Deleted Multiple Recipes", {
       position: "bottom-left",
       autoClose: 3000,
       hideProgressBar: false,

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useRecipe } from "../../context/RecipeContext";
 
-const LoginForm = ({ setSigninError }) => {
+import { toast } from "react-toastify";
+
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -45,9 +47,28 @@ const LoginForm = ({ setSigninError }) => {
       try {
         await login(email, password);
         navigate("/");
+        toast.success("Logged in", {
+          position: "bottom-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       } catch (e) {
         setLoader(false);
-        setSigninError("Email or Password is incorrect");
+        toast.error("Email or Password is incorrect", {
+          position: "bottom-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     }
   };
