@@ -3,6 +3,9 @@ import classes from "./Recipes.module.css";
 import { useRecipe } from "../context/RecipeContext";
 import { IoAddCircleSharp } from "react-icons/io5";
 import RecipeListItem from "../components/RecipeListItem/RecipeListItem";
+import AddIngredient from "../components/AddIngredient/AddIngredient";
+import AddInstructions from "../components/AddInstruction/AddInstruction";
+
 const Recipes = () => {
   // const [bookmark, setBookmark] = useState(true);
 
@@ -22,92 +25,12 @@ const Recipes = () => {
   const [showIngredientForm, setShowIngredientForm] = useState(false);
   const [showInstructionsForm, setShowInstructionsForm] = useState(false);
   const { recipes, handleNewRecipe } = useRecipe();
+  console.log(recipes);
   // const handleClick = () => {
   //   setBookmark(!bookmark);
   // };
   const submitForm = (e) => {
     handleNewRecipe(formData);
-  };
-
-  const AddIngredient = ({ setFormData, setShowIngredientForm }) => {
-    const [ingredient, setIngredient] = useState("");
-    const [quantity, setQuantity] = useState(0);
-    const onFormSubmit = () => {
-      if (ingredient.length !== 0 && quantity !== 0) {
-        setFormData({
-          ...formData,
-          ingredients: [
-            ...formData.ingredients,
-            { name: ingredient, quantity: quantity },
-          ],
-        });
-      }
-      setShowIngredientForm(false);
-    };
-    return (
-      <div>
-        <div className="row justify-content-between g-0">
-          <div className="col-8  mb-3">
-            <input
-              type="text"
-              className="form-control"
-              id="floatingPassword"
-              placeholder={`Ingredient ${formData.ingredients.length + 1}`}
-              onChange={(e) => {
-                setIngredient(e.target.value);
-              }}
-            />
-          </div>
-          <div className="col-3  mb-3">
-            <input
-              type="text"
-              className="form-control"
-              id="floatingPassword"
-              placeholder="Qty"
-              onChange={(e) => {
-                setQuantity(e.target.value);
-              }}
-            />
-          </div>
-        </div>
-        <div onClick={onFormSubmit} className="btn btn-primary">
-          Save
-        </div>
-      </div>
-    );
-  };
-
-  const AddInstructions = ({ setFormData, setShowInstructionsForm }) => {
-    const [instruction, setInstruction] = useState("");
-    const onFormSubmit = () => {
-      if (instruction.length !== 0) {
-        setFormData({
-          ...formData,
-          instructions: [...formData.instructions, instruction],
-        });
-      }
-      setShowInstructionsForm(false);
-    };
-    return (
-      <div>
-        <div className="row justify-content-between g-0">
-          <div className="col-8  mb-3">
-            <input
-              type="text"
-              className="form-control"
-              id="floatingPassword"
-              placeholder={`Instruction ${formData.instructions.length + 1}`}
-              onChange={(e) => {
-                setInstruction(e.target.value);
-              }}
-            />
-          </div>
-        </div>
-        <div onClick={onFormSubmit} className="btn btn-primary">
-          Save
-        </div>
-      </div>
-    );
   };
 
   const handleSubmit = () => {};
@@ -309,7 +232,14 @@ const Recipes = () => {
 
       <div className="container">
         {recipes.map((recipe) => {
-          return <RecipeListItem recipe={recipe} classes={classes} />;
+          return (
+            <RecipeListItem
+              recipe={recipe}
+              classes={classes}
+              handleClick={() => {}}
+              bookmark={true}
+            />
+          );
         })}
       </div>
     </div>
