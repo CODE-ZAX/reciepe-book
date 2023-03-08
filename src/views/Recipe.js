@@ -1,13 +1,14 @@
 import { useParams, Navigate } from "react-router-dom";
 import React from "react";
 import classes from "./Recipe.module.css";
-import { AiFillHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { FiMoreHorizontal } from "react-icons/fi";
 
 import { useRecipe } from "../context/RecipeContext";
 
 const Recipe = () => {
   const { rid } = useParams();
-  const { recipes } = useRecipe();
+  const { recipes, handleFavourite } = useRecipe();
   const recipeSearch = recipes.filter((single) => single.id == rid);
   var recipe;
 
@@ -28,11 +29,29 @@ const Recipe = () => {
               <p className="card-text">{recipe.details}</p>
             </div>
             <div className="d-flex align-items-center">
-              <button className="btn btn-success me-2">
-                <span>
-                  <AiFillHeart />
-                </span>
-              </button>
+              {!recipe.favourite ? (
+                <button
+                  className="btn btn-primary me-2"
+                  onClick={() => {
+                    handleFavourite(recipe);
+                  }}
+                >
+                  <span>
+                    <AiFillHeart />
+                  </span>
+                </button>
+              ) : (
+                <button
+                  className="btn btn-success me-2"
+                  onClick={() => {
+                    handleFavourite(recipe);
+                  }}
+                >
+                  <span>
+                    <AiOutlineHeart />
+                  </span>
+                </button>
+              )}
               <div className="dropdown">
                 <button
                   className="btn btn-secondary dropdown-toggle"
