@@ -1,8 +1,8 @@
 import { useParams, Navigate } from "react-router-dom";
 import React from "react";
 import classes from "./Recipe.module.css";
-import { BsFillBookmarkStarFill } from "react-icons/bs";
-import { FiMoreHorizontal } from "react-icons/fi";
+import { AiFillHeart } from "react-icons/ai";
+
 import { useRecipe } from "../context/RecipeContext";
 
 const Recipe = () => {
@@ -30,7 +30,7 @@ const Recipe = () => {
             <div className="d-flex align-items-center">
               <button className="btn btn-success me-2">
                 <span>
-                  <BsFillBookmarkStarFill />
+                  <AiFillHeart />
                 </span>
               </button>
               <div className="dropdown">
