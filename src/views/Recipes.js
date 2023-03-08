@@ -3,8 +3,6 @@ import classes from "./Recipes.module.css";
 import { useRecipe } from "../context/RecipeContext";
 import { IoAddCircleSharp } from "react-icons/io5";
 import RecipeListItem from "../components/RecipeListItem/RecipeListItem";
-import AddIngredient from "../components/AddIngredient/AddIngredient";
-import AddInstructions from "../components/AddInstruction/AddInstruction";
 
 const Recipes = () => {
   // const [bookmark, setBookmark] = useState(true);
@@ -24,7 +22,7 @@ const Recipes = () => {
   });
   const [showIngredientForm, setShowIngredientForm] = useState(false);
   const [showInstructionsForm, setShowInstructionsForm] = useState(false);
-  const { recipes, handleNewRecipe } = useRecipe();
+  const { recipes, handleNewRecipe, handleFavourite } = useRecipe();
   console.log(recipes);
   // const handleClick = () => {
   //   setBookmark(!bookmark);
@@ -33,7 +31,86 @@ const Recipes = () => {
     handleNewRecipe(formData);
   };
 
-  const handleSubmit = () => {};
+  const AddIngredient = ({ setFormData, setShowIngredientForm }) => {
+    const [ingredient, setIngredient] = useState("");
+    const [quantity, setQuantity] = useState(0);
+    const onFormSubmit = () => {
+      if (ingredient.length !== 0 && quantity !== 0) {
+        setFormData({
+          ...formData,
+          ingredients: [
+            ...formData.ingredients,
+            { name: ingredient, quantity: quantity },
+          ],
+        });
+      }
+      setShowIngredientForm(false);
+    };
+    return (
+      <div>
+        <div className="row justify-content-between g-0">
+          <div className="col-8  mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="floatingPassword"
+              placeholder={`Ingredient ${formData.ingredients.length + 1}`}
+              onChange={(e) => {
+                setIngredient(e.target.value);
+              }}
+            />
+          </div>
+          <div className="col-3  mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="floatingPassword"
+              placeholder="Qty"
+              onChange={(e) => {
+                setQuantity(e.target.value);
+              }}
+            />
+          </div>
+        </div>
+        <div onClick={onFormSubmit} className="btn btn-primary">
+          Save
+        </div>
+      </div>
+    );
+  };
+
+  const AddInstructions = ({ setFormData, setShowInstructionsForm }) => {
+    const [instruction, setInstruction] = useState("");
+    const onFormSubmit = () => {
+      if (instruction.length !== 0) {
+        setFormData({
+          ...formData,
+          instructions: [...formData.instructions, instruction],
+        });
+      }
+      setShowInstructionsForm(false);
+    };
+    return (
+      <div>
+        <div className="row justify-content-between g-0">
+          <div className="col-8  mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="floatingPassword"
+              placeholder={`Instruction ${formData.instructions.length + 1}`}
+              onChange={(e) => {
+                setInstruction(e.target.value);
+              }}
+            />
+          </div>
+        </div>
+        <div onClick={onFormSubmit} className="btn btn-primary">
+          Save
+        </div>
+      </div>
+    );
+  };
   return (
     <div className={classes.body}>
       <h1 className="text-center">All Recipes</h1>
@@ -236,7 +313,7 @@ const Recipes = () => {
             <RecipeListItem
               recipe={recipe}
               classes={classes}
-              handleClick={() => {}}
+              handleFavourite={handleFavourite}
               bookmark={true}
             />
           );

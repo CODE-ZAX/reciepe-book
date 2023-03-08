@@ -3,7 +3,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-const RecipeListItem = ({ recipe, classes, handleClick, bookmark }) => {
+const RecipeListItem = ({ recipe, classes, handleFavourite }) => {
   const navigate = useNavigate();
   const recipeId = recipe.id;
   const handleRecipe = () => {
@@ -11,11 +11,13 @@ const RecipeListItem = ({ recipe, classes, handleClick, bookmark }) => {
   };
 
   return (
-    <div onClick={handleRecipe} className="card mb-3 ">
+    <div className="card mb-3 ">
       <div className="row g-0">
         <div className="col-md-4">
           <img
+            onClick={handleRecipe}
             src={recipe.url}
+            style={{ cursor: "pointer" }}
             className={"img-fluid rounded-start" + classes.customImg}
             alt="..."
           />
