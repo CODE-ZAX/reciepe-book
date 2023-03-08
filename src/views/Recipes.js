@@ -8,6 +8,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
 
 import MainForm from "../components/Forms/MainForm";
+import { toast } from "react-toastify";
 
 const Recipes = () => {
   // const [bookmark, setBookmark] = useState(true);
@@ -20,6 +21,16 @@ const Recipes = () => {
     selected.forEach(handleDelete);
     setIsEditing(!isEditing);
     setSelected([]);
+    toast.success("Deleted Multiple", {
+      position: "bottom-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   const handleEdit = () => {

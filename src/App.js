@@ -10,6 +10,8 @@ import Recipes from "./views/Recipes";
 import Signup from "./views/Signup";
 import RecipeError from "./Utility/RecipeError";
 import Profile from "./views/Profile";
+import { ToastContainer } from "react-toastify";
+
 const App = () => {
   return (
     <div>
@@ -27,6 +29,18 @@ const App = () => {
         <Route path="profile" element={<Profile />} />
         <Route path="*" element={<Error />} />
       </Routes>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
