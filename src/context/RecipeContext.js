@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -156,10 +156,8 @@ const reducer = (state, action) => {
   }
 };
 const RecipeProvider = ({ children }) => {
-  const [recipes, dispatch] = useReducer(reducer, initialRecipes);
-  // const [recipes, setRecipes] = useState(initialRecipes);
-  // const recipes = initialRecipes;
   const [user, setUser] = useState(null);
+  const [recipes, dispatch] = useReducer(reducer, initialRecipes);
 
   const handleNewRecipe = (recipe) => {
     dispatch({ type: "Add", data: recipe });
@@ -167,11 +165,6 @@ const RecipeProvider = ({ children }) => {
   const handleFavourite = (recipe) => {
     dispatch({ type: "Favourite", id: recipe.id });
   };
-
-  // const addRecipe = (recipe) => {
-  // recipes.push(recipe);
-  // setRecipes((previousRecipes) => [...previousRecipes, recipe]);
-  // };
 
   const signUp = (email, password) =>
     createUserWithEmailAndPassword(auth, email, password);
@@ -184,13 +177,15 @@ const RecipeProvider = ({ children }) => {
 
   const logOut = () => signOut(auth);
 
-  onAuthStateChanged(auth, (usr) => {
-    if (usr) {
-      setUser(usr);
-    } else {
-      setUser(null);
-    }
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (usr) => {
+      if (usr) {
+        setUser(usr);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
 
   return (
     <RecipeContext.Provider
