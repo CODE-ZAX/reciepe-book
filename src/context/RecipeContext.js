@@ -141,7 +141,15 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "Add":
       return [...state, action.data];
-    case "Remove":
+    case "Edit":
+      return state.map((item) => {
+        if (item.id === action.data.id) {
+          return { ...action.data, id: action.data.id };
+        } else {
+          return item;
+        }
+      });
+    case "Delete":
       return state.filter((item) => item.id !== action.id);
     case "Favourite":
       return state.map((item) => {
@@ -161,6 +169,12 @@ const RecipeProvider = ({ children }) => {
 
   const handleNewRecipe = (recipe) => {
     dispatch({ type: "Add", data: recipe });
+  };
+  const handleEditRecipe = (recipe) => {
+    dispatch({ type: "Edit", data: recipe });
+  };
+  const handleDelete = (recipe) => {
+    dispatch({ type: "Delete", id: recipe.id });
   };
   const handleFavourite = (recipe) => {
     dispatch({ type: "Favourite", id: recipe.id });
@@ -199,6 +213,8 @@ const RecipeProvider = ({ children }) => {
         setUser,
         handleNewRecipe,
         handleFavourite,
+        handleEditRecipe,
+        handleDelete,
       }}
     >
       {children}
