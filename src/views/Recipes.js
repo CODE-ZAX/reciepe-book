@@ -4,6 +4,9 @@ import { useRecipe } from "../context/RecipeContext";
 import { IoAddCircleSharp } from "react-icons/io5";
 import RecipeListItem from "../components/RecipeListItem/RecipeListItem";
 import { AiFillEdit } from "react-icons/ai";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
+
 import MainForm from "../components/Forms/MainForm";
 
 const Recipes = () => {
@@ -29,16 +32,43 @@ const Recipes = () => {
       <h1 className="text-center">All Recipes</h1>
       <div className="container d-flex justify-content-end">
         <div className="d-flex justify-content-center align-items-center mb-3">
-          <button
-            type="button"
-            className="btn btn-success mt-3 d-flex justify-content-center align-items-center"
-            onClick={handleEdit}
-          >
-            <span>
-              <AiFillEdit size={25} />
-            </span>
-            Edit
-          </button>
+          {selected.length !== 0 && (
+            <button
+              type="button"
+              className="btn btn-danger mt-3 me-3 d-flex justify-content-center align-items-center"
+              onClick={delMul}
+            >
+              <span>
+                <AiFillDelete size={25} className="me-2" />
+              </span>
+              Delete
+            </button>
+          )}
+
+          {!isEditing ? (
+            <button
+              type="button"
+              className="btn btn-success mt-3 d-flex justify-content-center align-items-center"
+              onClick={handleEdit}
+            >
+              <span>
+                <AiFillEdit size={25} className="me-2" />
+              </span>
+              Edit
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-danger mt-3 d-flex justify-content-center align-items-center"
+              onClick={handleEdit}
+            >
+              <span>
+                <AiFillCloseCircle size={25} className="me-2" />
+              </span>
+              Close
+            </button>
+          )}
+
           <button
             type="button"
             className="btn btn-primary mt-3 ms-3 d-flex justify-content-center align-items-center"
@@ -46,7 +76,7 @@ const Recipes = () => {
             data-bs-target="#exampleModal"
           >
             <span>
-              <IoAddCircleSharp size={25} />
+              <IoAddCircleSharp size={25} className="me-2" />
             </span>
             Add New Recipe
           </button>
