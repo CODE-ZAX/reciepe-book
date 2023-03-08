@@ -1,17 +1,19 @@
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
+import { IoNewspaperOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
-const RecipeListItem = ({ recipe, classes, handleFavourite }) => {
+const RecipeListItem = ({ recipe, classes, handleFavourite, isEditing }) => {
   const navigate = useNavigate();
   const recipeId = recipe.id;
   const handleRecipe = () => {
     navigate(`/recipe/${recipeId}`);
   };
 
-  return (
+  return isEditing ? (
     <div className="card mb-3 ">
+      <input type="text" />
       <div className="row g-0">
         <div className="col-md-4">
           <img
@@ -60,6 +62,8 @@ const RecipeListItem = ({ recipe, classes, handleFavourite }) => {
         </div>
       </div>
     </div>
+  ) : (
+    <div>Hello</div>
   );
 };
 

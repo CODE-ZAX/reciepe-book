@@ -3,10 +3,12 @@ import classes from "./Recipes.module.css";
 import { useRecipe } from "../context/RecipeContext";
 import { IoAddCircleSharp } from "react-icons/io5";
 import RecipeListItem from "../components/RecipeListItem/RecipeListItem";
+import { AiFillEdit } from "react-icons/ai";
 
 const Recipes = () => {
   // const [bookmark, setBookmark] = useState(true);
 
+  const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     favourite: false,
     id: Math.floor(Math.random() * 100000),
@@ -29,6 +31,11 @@ const Recipes = () => {
   // };
   const submitForm = (e) => {
     handleNewRecipe(formData);
+  };
+
+  const handleEdit = () => {
+    setIsEditing(!isEditing);
+    console.log("Here");
   };
 
   const AddIngredient = ({ setFormData, setShowIngredientForm }) => {
@@ -115,10 +122,20 @@ const Recipes = () => {
     <div className={classes.body}>
       <h1 className="text-center">All Recipes</h1>
       <div className="container d-flex justify-content-end">
-        <div className="mb-2">
+        <div className="d-flex justify-content-center align-items-center mb-3">
           <button
             type="button"
-            className="btn btn-primary mt-3 d-flex justify-content-center align-items-center"
+            className="btn btn-success mt-3 d-flex justify-content-center align-items-center"
+            onClick={handleEdit}
+          >
+            <span>
+              <AiFillEdit size={25} />
+            </span>
+            Edit
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary mt-3 ms-3 d-flex justify-content-center align-items-center"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
@@ -315,6 +332,7 @@ const Recipes = () => {
               classes={classes}
               handleFavourite={handleFavourite}
               bookmark={true}
+              isEditing={isEditing}
             />
           );
         })}
