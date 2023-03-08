@@ -52,24 +52,6 @@ const Recipe = () => {
                   </span>
                 </button>
               )}
-              <div className="dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <FiMoreHorizontal />
-                </button>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton1"
-                >
-                  <li className="dropdown-item">Edit</li>
-                  <li className="dropdown-item">Delete</li>
-                </ul>
-              </div>
             </div>
           </div>
           <ul className={"list-group list-group-flush " + classes.customList}>

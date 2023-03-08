@@ -9,7 +9,7 @@ const Bookmark = () => {
       <h1 className="text-center mb-4">Favourites</h1>
       <div className="container">
         {recipes.filter((item) => !item.favourite).length === 0 ? (
-          <div>No Recipe Yet</div>
+          <div className="text-center">No Recipe Yet</div>
         ) : (
           recipes
             .filter((item) => !item.favourite)

@@ -17,9 +17,9 @@ const Recipes = () => {
   const { recipes, handleFavourite, handleDelete } = useRecipe();
 
   const delMul = () => {
-    selected.forEach((item) => {
-      handleDelete(item.id);
-    });
+    selected.forEach(handleDelete);
+    setIsEditing(!isEditing);
+    setSelected([]);
   };
 
   const handleEdit = () => {
