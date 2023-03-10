@@ -50,16 +50,18 @@ const Navbar = () => {
                 Recipes
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link text-success" : "nav-link"
-                }
-                to="/favourite"
-              >
-                Favourites
-              </NavLink>
-            </li>
+            {user && (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "nav-link text-success" : "nav-link"
+                  }
+                  to="/favourite"
+                >
+                  Favourites
+                </NavLink>
+              </li>
+            )}
             {user ? (
               <li className="nav-item">
                 <NavLink

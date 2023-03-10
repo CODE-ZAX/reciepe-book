@@ -8,7 +8,7 @@ import { useRecipe } from "../context/RecipeContext";
 
 const Recipe = () => {
   const { rid } = useParams();
-  const { recipes, handleFavourite } = useRecipe();
+  const { recipes, handleFavourite, user } = useRecipe();
   const recipeSearch = recipes.filter((single) => single.id == rid);
   var recipe;
 
@@ -29,28 +29,32 @@ const Recipe = () => {
               <p className="card-text">{recipe.details}</p>
             </div>
             <div className="d-flex align-items-center">
-              {!recipe.favourite ? (
-                <button
-                  className="btn btn-primary me-2"
-                  onClick={() => {
-                    handleFavourite(recipe);
-                  }}
-                >
-                  <span>
-                    <AiFillHeart />
-                  </span>
-                </button>
-              ) : (
-                <button
-                  className="btn btn-success me-2"
-                  onClick={() => {
-                    handleFavourite(recipe);
-                  }}
-                >
-                  <span>
-                    <AiOutlineHeart />
-                  </span>
-                </button>
+              {user && (
+                <>
+                  {!recipe.favourite ? (
+                    <button
+                      className="btn btn-primary me-2"
+                      onClick={() => {
+                        handleFavourite(recipe);
+                      }}
+                    >
+                      <span>
+                        <AiFillHeart />
+                      </span>
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-success me-2"
+                      onClick={() => {
+                        handleFavourite(recipe);
+                      }}
+                    >
+                      <span>
+                        <AiOutlineHeart />
+                      </span>
+                    </button>
+                  )}
+                </>
               )}
             </div>
           </div>

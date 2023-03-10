@@ -15,7 +15,7 @@ const Recipes = () => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [selected, setSelected] = useState([]);
-  const { recipes, handleFavourite, handleDelete } = useRecipe();
+  const { recipes, handleFavourite, handleDelete, user } = useRecipe();
 
   const delMul = () => {
     selected.forEach(handleDelete);
@@ -43,54 +43,58 @@ const Recipes = () => {
       <h1 className="text-center">All Recipes</h1>
       <div className="container d-flex justify-content-end">
         <div className="d-flex justify-content-center align-items-center mb-3">
-          {selected.length !== 0 && (
-            <button
-              type="button"
-              className="btn btn-danger mt-3 me-3 d-flex justify-content-center align-items-center"
-              onClick={delMul}
-            >
-              <span>
-                <AiFillDelete size={25} className="me-2" />
-              </span>
-              Delete
-            </button>
-          )}
+          {user && (
+            <>
+              {selected.length !== 0 && (
+                <button
+                  type="button"
+                  className="btn btn-danger mt-3 me-3 d-flex justify-content-center align-items-center"
+                  onClick={delMul}
+                >
+                  <span>
+                    <AiFillDelete size={25} className="me-2" />
+                  </span>
+                  Delete
+                </button>
+              )}
 
-          {!isEditing ? (
-            <button
-              type="button"
-              className="btn btn-success mt-3 d-flex justify-content-center align-items-center"
-              onClick={handleEdit}
-            >
-              <span>
-                <AiFillEdit size={25} className="me-2" />
-              </span>
-              Edit
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="btn btn-danger mt-3 d-flex justify-content-center align-items-center"
-              onClick={handleEdit}
-            >
-              <span>
-                <AiFillCloseCircle size={25} className="me-2" />
-              </span>
-              Close
-            </button>
-          )}
+              {!isEditing ? (
+                <button
+                  type="button"
+                  className="btn btn-success mt-3 d-flex justify-content-center align-items-center"
+                  onClick={handleEdit}
+                >
+                  <span>
+                    <AiFillEdit size={25} className="me-2" />
+                  </span>
+                  Edit
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="btn btn-danger mt-3 d-flex justify-content-center align-items-center"
+                  onClick={handleEdit}
+                >
+                  <span>
+                    <AiFillCloseCircle size={25} className="me-2" />
+                  </span>
+                  Close
+                </button>
+              )}
 
-          <button
-            type="button"
-            className="btn btn-primary mt-3 ms-3 d-flex justify-content-center align-items-center"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            <span>
-              <IoAddCircleSharp size={25} className="me-2" />
-            </span>
-            Add New Recipe
-          </button>
+              <button
+                type="button"
+                className="btn btn-primary mt-3 ms-3 d-flex justify-content-center align-items-center"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <span>
+                  <IoAddCircleSharp size={25} className="me-2" />
+                </span>
+                Add New Recipe
+              </button>
+            </>
+          )}
         </div>
         <MainForm />
       </div>
@@ -105,6 +109,7 @@ const Recipes = () => {
               handleFavourite={handleFavourite}
               bookmark={true}
               isEditing={isEditing}
+              user={user}
             />
           );
         })}

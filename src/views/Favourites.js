@@ -3,7 +3,7 @@ import { useRecipe } from "../context/RecipeContext";
 import { AiFillHeart } from "react-icons/ai";
 
 const Bookmark = () => {
-  const { recipes, handleFavourite } = useRecipe();
+  const { recipes, handleFavourite, user } = useRecipe();
   return (
     <div style={{ height: "100vh", marginTop: "70px" }}>
       <h1 className="text-center mb-4">Favourites</h1>

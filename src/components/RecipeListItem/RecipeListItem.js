@@ -11,6 +11,7 @@ const RecipeListItem = ({
   isEditing,
   handleDelete,
   setSelected,
+  user,
 }) => {
   const navigate = useNavigate();
   const recipeId = recipe.id;
@@ -54,31 +55,33 @@ const RecipeListItem = ({
               <div className="card-body">
                 <div className="d-flex justify-content-between">
                   <h5 className="card-title">{recipe.name}</h5>
-                  <div>
-                    {recipe.favourite ? (
-                      <button
-                        onClick={() => {
-                          handleFavourite(recipe);
-                        }}
-                        className="btn btn-success"
-                      >
-                        <span>
-                          <AiOutlineHeart size={20} />
-                        </span>
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => {
-                          handleFavourite(recipe);
-                        }}
-                        className="btn btn-primary"
-                      >
-                        <span>
-                          <AiFillHeart size={20} />
-                        </span>
-                      </button>
-                    )}
-                  </div>
+                  {user && (
+                    <div>
+                      {recipe.favourite ? (
+                        <button
+                          onClick={() => {
+                            handleFavourite(recipe);
+                          }}
+                          className="btn btn-success"
+                        >
+                          <span>
+                            <AiOutlineHeart size={20} />
+                          </span>
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            handleFavourite(recipe);
+                          }}
+                          className="btn btn-primary"
+                        >
+                          <span>
+                            <AiFillHeart size={20} />
+                          </span>
+                        </button>
+                      )}
+                    </div>
+                  )}
                 </div>
                 <p className="card-text ">{recipe.details}</p>
 
