@@ -1,10 +1,12 @@
+import React from "react";
 import { fireEvent, render } from "@testing-library/react";
+import RecipeListItem from "./RecipeListItem";
 
 const recipe = { id: 1, name: "Pasta", ingredients: ["pasta", "sauce"] };
 let selected = [];
 
 const { getByRole } = render(
-  <YourComponent isEditing={true} recipe={recipe} setSelected={setSelected} />
+  <RecipeListItem isEditing={true} recipe={recipe} setSelected={setSelected} />
 );
 
 const checkbox = getByRole("checkbox");

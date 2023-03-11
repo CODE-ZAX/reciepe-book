@@ -1,8 +1,6 @@
-import React from "react";
-import { shallow } from "enzyme";
 import { toast } from "react-toastify";
 
-import { delMul, handleEdit } from "./yourComponent.js";
+import { delMul, handleEdit } from "./Recipes";
 
 describe("delMul function", () => {
   const handleDelete = jest.fn();

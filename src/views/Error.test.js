@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import NotFoundPage from "./NotFoundPage";
+import Error from "./Error";
 
 describe("NotFoundPage", () => {
   it("renders not found message correctly", () => {
-    render(<NotFoundPage />);
+    render(<Error />);
 
     const notFoundMsg = screen.getByText("404");
     expect(notFoundMsg).toBeInTheDocument();

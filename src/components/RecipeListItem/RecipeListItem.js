@@ -1,7 +1,6 @@
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
-import { IoNewspaperOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 const RecipeListItem = ({

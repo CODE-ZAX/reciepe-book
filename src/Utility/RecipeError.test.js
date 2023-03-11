@@ -1,10 +1,10 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import NotFound from "./NotFound";
+import RecipeError from "./RecipeError";
 
-describe("NotFound component", () => {
+describe("RecipeError component", () => {
   it("renders the correct text", () => {
-    const { getByText } = render(<NotFound />);
+    const { getByText } = render(<RecipeError />);
     expect(getByText("404")).toBeInTheDocument();
     expect(getByText("Recipe Not Found")).toBeInTheDocument();
   });

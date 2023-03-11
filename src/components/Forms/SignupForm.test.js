@@ -1,3 +1,6 @@
+import React from "react";
+import { render, fireEvent, waitFor, render } from "@testing-library/react";
+
 test("successful sign up with valid inputs and account management", async () => {
   const signUp = jest.fn().mockResolvedValueOnce(true);
   const manageAccount = jest.fn().mockResolvedValueOnce(true);
