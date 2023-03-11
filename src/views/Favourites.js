@@ -5,7 +5,7 @@ import { AiFillHeart } from "react-icons/ai";
 const Bookmark = () => {
   const { recipes, handleFavourite, user } = useRecipe();
   return (
-    <div style={{ height: "100vh", marginTop: "70px" }}>
+    <div style={{ marginTop: "70px" }}>
       <h1 className="text-center mb-4">Favourites</h1>
       <div className="container">
         {recipes.filter((item) => !item.favourite).length === 0 ? (
